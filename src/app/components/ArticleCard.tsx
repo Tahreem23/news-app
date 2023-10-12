@@ -47,7 +47,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
             Read More
           </a>
         </CardContent>
-        <Button onClick={toggleLanguage}>Toggle Language</Button>
       </Card>
     </div>
   );
