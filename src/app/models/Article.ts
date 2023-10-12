@@ -25,9 +25,27 @@ class Article {
       this.source_id = source_id;
       this.source_name = source_name;
     }
+
+    static getFromDate() : string {
+      const today = new Date();
+      const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+
+      const formattedDate = `${lastWeek.getFullYear()}-${lastWeek.getMonth() + 1}-${lastWeek.getDate()}`;
+
+      console.log(formattedDate); // 2023-10-05
+      return formattedDate;
+    }
     
-    static async findAll() {
-      const articles = await getArticles("apple", "en", "2023-10-05", "publishedAt");
+    static async findAll(query: string, language: string) {
+
+      // setting default parameters if no values received
+      query = query == "" || query == undefined || query == null ? "apple" : query;
+      language = language == "" || language == undefined || language == null ? "en" : language;
+      
+      const from: string = Article.getFromDate();
+      const sortBy = "publishedAt";
+
+      const articles = await getArticles(query, language, from, sortBy);
   
       return articles;
     }
