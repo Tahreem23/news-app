@@ -8,17 +8,11 @@ interface ArticleCardProps {
   article: Article;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
-
-  const [isArabic, setIsArabic] = useState(false); // Initially, English
-
-  const toggleLanguage = () => {
-    setIsArabic((prevIsArabic) => !prevIsArabic);
-  };
+const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
 
   return (
-    <div className="max-w-md mx-auto">
-      <Card>
+    <div className="max-w-md mx-auto rtl">
+      <Card dir={dir}>
         <CardContent>
             <img
                 src={article.urlToImage}
