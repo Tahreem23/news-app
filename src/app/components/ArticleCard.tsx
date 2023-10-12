@@ -21,7 +21,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
       <Card>
         <CardContent>
             <img
-                src="https://i.kinja-img.com/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/0ab905d11d55bda39109b54f1f95b63f.jpg"
+                src={article.urlToImage}
                 alt={article.title}
                 style={{
                 width: '100%',
