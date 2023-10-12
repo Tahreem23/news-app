@@ -10,6 +10,17 @@ interface ArticleCardProps {
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
 
+  const getFormattedPublishedDate = (publishedDate: string) => {
+    const dateTimeString = publishedDate;
+    const date = new Date(dateTimeString);
+
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(date);
+
+
+    return formattedDate;
+  }
+
   return (
     <div className="max-w-md mx-auto rtl">
       <Card dir={dir}>
@@ -23,14 +34,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
                 objectFit: 'cover',
                 }}
           />
-          <Typography variant="h6" component="div">
+          <Typography variant="h6" component="div" className="article-title">
             {article.title}
           </Typography>
           <Typography variant="body2" component="div">
             {article.description}
           </Typography>
-          <Typography variant="body2" component="div">
-            Published at: {article.publishedAt}
+          <Typography variant="body2" component="div" className='published-date'>
+            Published at: {getFormattedPublishedDate(article.publishedAt)}
           </Typography>
           <a
             href={article.url}

@@ -20,3 +20,15 @@ body {
   color: rgb(var(--foreground-rgb));
   
 }
+
+.article-title{
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.published-date{
+  margin-top: 5px;
+  color: #aaa;
+  font-size:13px;
+}
