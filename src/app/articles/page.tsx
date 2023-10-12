@@ -40,6 +40,12 @@ const ArticleListPage: React.FC = () => {
           <ArticleCard key={index} article={article} dir={lang == "ar" ? "rtl" : "ltr"} />
         ))}
       </div>
+      
+        {articles.length == 0 && 
+          <div className="w-full text-center">
+            Nothing to see here...
+          </div>
+        }
     </>
   );
 };
