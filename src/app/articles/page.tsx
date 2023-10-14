@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+
 import Article from '../models/Article';
 import ArticleCard from '../components/ArticleCard';
-import ArticleFilter from '../components/ArticleFilter';
 import LanguageToggle from '../components/LanguageToggle';
 import ChipSelection from '../components/ChipSelection';
 
@@ -16,31 +17,42 @@ const ArticleListPage: React.FC = () => {
   const [articles, setArticles] = useState([]);
   const [lang, setLang] = useState('en');
   const [searchText, setSearchText] = useState('');
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    getArticles(searchText, lang).then((result) => {
-      setArticles(result);
-    });
+    handleArticles();    
   }, [searchText, lang]);
 
-  const handleSearch = (searchText: string) => {
-    setSearchText(searchText);
+  const handleArticles = () => {
+    getArticles(searchText, lang).then((result) => {
+      setArticles(result);
+      setLoading(false);
+    })
+    .catch((error) => {
+      setLoading(false);
+      console.error(error);
+    });
   }
 
   const handleLanguageChange = (language: string) => {
+    setLoading(true);
     setLang(language);
   }
 
   const handleSelectedChip = (chip: string) => {
+    setLoading(true);
     setSearchText(chip);
   }
 
   return (
     <>
       <LanguageToggle onLanguageToggle={handleLanguageChange} />
-      {/* <ArticleFilter onSearch={handleSearch} /> */}
       <ChipSelection onChipSelection={handleSelectedChip} />
 
+      {isLoading && <div className='flex justify-center align-items-center mt-10'>
+          <CircularProgress />
+      </div>}
+      
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article, index) => (
           <ArticleCard key={index} article={article} dir={lang == "ar" ? "rtl" : "ltr"} />
