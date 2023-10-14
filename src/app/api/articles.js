@@ -3,11 +3,12 @@ import Article from '../models/Article';
 const API_URL = "https://newsapi.org/v2/everything";
 
 export async function getArticles(query, language, from, sortBy) {
-    
-    const response = await fetch(`${API_URL}?q=${query}&language=${language}&from=${from}&sortBy=${sortBy}&apiKey=${process.env.API_KEY}`);
 
     // console.log(`${API_URL}?q=${query}&language=${language}&from=${from}&sortBy=${sortBy}&apiKey=${process.env.API_KEY}`);
     // return [];
+    
+    const response = await fetch(`${API_URL}?q=${query}&language=${language}&from=${from}&sortBy=${sortBy}&apiKey=${process.env.API_KEY}`);
+    
     const articlesData = await response.json();
     
     if(articlesData.status == "error"){
