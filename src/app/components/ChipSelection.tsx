@@ -21,7 +21,7 @@ const ChipSelection = ({onChipSelection,}) => {
         {chips.map((chipValue, index) => {
             return (
                 <Chip
-                    sx={{marginLeft: "10px"}}
+                    sx={{marginLeft: "10px", marginTop: "5px"}}
                     key={index}
                     label={chipValue}
                     onClick={(event) => handleChipClick(event, chipValue)}

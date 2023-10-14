@@ -35,11 +35,13 @@ const ArticleListPage: React.FC = () => {
   }
 
   const handleLanguageChange = (language: string) => {
+    setArticles([]);
     setLoading(true);
     setLang(language);
   }
 
   const handleSelectedChip = (chip: string) => {
+    setArticles([]);
     setLoading(true);
     setSearchText(chip);
   }

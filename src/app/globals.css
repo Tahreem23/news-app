@@ -40,4 +40,5 @@ body{
 
 .selected-chip{
   background-color: darkgray;
+  color: #656363;
 }

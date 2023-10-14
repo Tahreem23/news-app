@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Article from '../models/Article';
 import { Card, CardContent, Typography } from '@mui/material';
-import img from "../../images/article-cover.png"
+import TruncateText from "./TruncateText";
 
 interface ArticleCardProps {
   article: Article;
@@ -35,18 +35,22 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
 
   return (
     <div className="max-w-md mx-auto">
-      <Card dir={dir}>
-        <CardContent>
-            <img
-                src={imageUrl}
-                alt={imageAlt}
-                onError={handleImageError}
-                style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-                }}
+      <Card dir={dir} className="flex flex-col">
+        <div className="w-full">
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            onError={handleImageError}
+            className="w-full h-auto object-cover"
+            style={{
+              width: '100%',
+              height: '200px',
+              objectFit: 'cover',
+              }}
           />
+        </div>
+
+        <div className="w-full p-4">
           <Typography variant="h6" component="div" className="article-title">
             {article.title}
           </Typography>
@@ -64,7 +68,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
           >
             Read More
           </a>
-        </CardContent>
+        </div>
       </Card>
     </div>
   );
