@@ -5,6 +5,7 @@ import Article from '../models/Article';
 import ArticleCard from '../components/ArticleCard';
 import ArticleFilter from '../components/ArticleFilter';
 import LanguageToggle from '../components/LanguageToggle';
+import ChipSelection from '../components/ChipSelection';
 
 const getArticles = async (q, l) => {
   return Article.findAll(q, l);
@@ -30,17 +31,22 @@ const ArticleListPage: React.FC = () => {
     setLang(language);
   }
 
+  const handleSelectedChip = (chip: string) => {
+    setSearchText(chip);
+  }
+
   return (
     <>
       <LanguageToggle onLanguageToggle={handleLanguageChange} />
-      <ArticleFilter onSearch={handleSearch} />
+      {/* <ArticleFilter onSearch={handleSearch} /> */}
+      <ChipSelection onChipSelection={handleSelectedChip} />
 
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article, index) => (
           <ArticleCard key={index} article={article} dir={lang == "ar" ? "rtl" : "ltr"} />
         ))}
       </div>
-      
+
         {articles.length == 0 && 
           <div className="w-full text-center">
             Nothing to see here...

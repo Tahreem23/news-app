@@ -22,7 +22,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
   }
 
   return (
-    <div className="max-w-md mx-auto rtl">
+    <div className="max-w-md mx-auto">
       <Card dir={dir}>
         <CardContent>
             <img

@@ -32,3 +32,11 @@ body {
   color: #aaa;
   font-size:13px;
 }
+
+.custom-chip{
+  margin-left: 10px;
+}
+
+.selected-chip{
+  background-color: darkgray;
+}

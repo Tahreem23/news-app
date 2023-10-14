@@ -39,8 +39,8 @@ class Article {
     static async findAll(query: string, language: string) {
 
       // setting default parameters if no values received
-      query = query == "" || query == undefined || query == null ? "apple" : query;
-      language = language == "" || language == undefined || language == null ? "en" : language;
+      query = query || "apple";
+      language = language || "en";
       
       const from: string = Article.getFromDate();
       const sortBy = "publishedAt";
