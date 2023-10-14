@@ -2,11 +2,14 @@
 
 import React, { useState } from 'react';
 import Article from '../models/Article';
-import { Button, Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
+import img from "../../images/article-cover.png"
 
 interface ArticleCardProps {
   article: Article;
 }
+
+const placeholderImageUrl = 'https://craftsnippets.com/articles_images/placeholder/placeholder.jpg';
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
 
@@ -21,13 +24,23 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
     return formattedDate;
   }
 
+  const [imageUrl, setImageUrl] = useState(article.urlToImage);
+  const [imageAlt, setImageAlt] = useState(article.title);
+
+  const handleImageError = () => {
+    console.log("image error")
+    setImageUrl(placeholderImageUrl);
+    setImageAlt('');
+  }
+
   return (
     <div className="max-w-md mx-auto">
       <Card dir={dir}>
         <CardContent>
             <img
-                src={article.urlToImage}
-                alt={article.title}
+                src={imageUrl}
+                alt={imageAlt}
+                onError={handleImageError}
                 style={{
                 width: '100%',
                 height: '200px',
