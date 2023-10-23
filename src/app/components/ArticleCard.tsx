@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Article from '../models/Article';
 import { Card, CardContent, Typography } from '@mui/material';
-import TruncateText from "./TruncateText";
 
 interface ArticleCardProps {
   article: Article;
