@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 
-const ArticleFilter = ({ onSearch }) => {
+interface ArticleFilterProps {
+  onSearch: (searchText: string) => void;
+}
+
+const ArticleFilter: React.FC<ArticleFilterProps> = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
 
-  const handleSearch = (event: any) => {
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     event.persist();
     setSearchText(event.target.value);
   };
