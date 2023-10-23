@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch } from '@mui/material';
 
-const LanguageToggle = ({ onLanguageToggle }) => {
-  const [language, setLanguage] = React.useState('en');
+interface LanguageToggleProps {
+  onLanguageToggle: (language: string) => void;
+}
 
-  const handleLanguageChange = (event: any) => {
+const LanguageToggle: React.FC<LanguageToggleProps> = ({ onLanguageToggle }) => {
+  const [language, setLanguage] = useState('en');
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLanguage(event.target.checked ? 'ar' : 'en');
   };
 
