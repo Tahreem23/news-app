@@ -24,7 +24,7 @@ const ThemeSwitcher = () => {
         <div>
             {"Theme"}
             <Switch
-                checked={theme === 'light'}
+                checked={theme != 'dark'}
                 onChange={handleThemeChange}
             /> {theme}
         </div>
