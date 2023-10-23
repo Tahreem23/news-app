@@ -8,7 +8,7 @@ import ArticleCard from '../components/ArticleCard';
 import LanguageToggle from '../components/LanguageToggle';
 import ChipSelection from '../components/ChipSelection';
 
-const getArticles = async (q, l) => {
+const getArticles = async (q: string, l: string) => {
   return Article.findAll(q, l);
 }
 
