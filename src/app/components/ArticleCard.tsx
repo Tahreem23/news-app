@@ -6,6 +6,7 @@ import { Card, CardContent, Typography } from '@mui/material';
 
 interface ArticleCardProps {
   article: Article;
+  dir: string;
 }
 
 const placeholderImageUrl = 'https://craftsnippets.com/articles_images/placeholder/placeholder.jpg';
@@ -16,7 +17,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, dir }) => {
     const dateTimeString = publishedDate;
     const date = new Date(dateTimeString);
 
-    const options = { year: "numeric", month: "long", day: "numeric" };
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    };
+
+    //const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Intl.DateTimeFormat("en-US", options).format(date);
 
 

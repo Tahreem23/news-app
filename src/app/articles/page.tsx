@@ -57,8 +57,7 @@ const ArticleListPage: React.FC = () => {
       
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article, index) => (
-          <ArticleCard key={index} article={article}  />
-          // dir={lang == "ar" ? "rtl" : "ltr"} />
+          <ArticleCard key={index} article={article} dir={lang == "ar" ? "rtl" : "ltr"} />
         ))}
       </div>
 
